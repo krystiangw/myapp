@@ -1,0 +1,167 @@
+<img class="intro-bg" src="../images/intro-bg.jpg" />
+
+<div class="container auth-forms-dark">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+            <h2>Register Yourself</h2>
+            <h3>{{ message }}</h3>
+                
+            </center>
+        </div>
+    </div>
+    <hr />
+    <form name="student_reg" ng-submit="register()">
+    <p ng-show="error" class="text-danger">{{ error }}</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" ng-model="user.studentname"required oninvalid="this.setCustomValidity('Name could not be blank')" oninput="this.setCustomValidity('')"  placeholder="Name" class="form-control input-lg">
+                
+                <input type="email" ng-model="user.email" placeholder="Enter your Email Address"  required oninvalid="this.setCustomValidity('Please enter a valid Email Address')" oninput="this.setCustomValidity('')" title='Enter in format abcdef@email.com' class="form-control input-lg" ui-validate="{blacklist : 'notBlackListed($value)' }">
+                
+                <input type="text" ng-model="user.studentmobile" required pattern="[0-9]{3}-?[0-9]{6,12}$" maxlength=15 title="Phone number must be atleast 9 digits long"oninput="this.setCustomValidity('')"  placeholder="Mobile Number" class="form-control input-lg">
+                
+                <input type="text" ng-model="user.fathername" required oninvalid="this.setCustomValidity('Fathers name cannot be blank')" oninput="this.setCustomValidity('')"  placeholder="Father's Name" class="form-control input-lg">
+                
+                <input type="text" ng-model="user.occupation" required oninvalid="this.setCustomValidity('Please enter your Fathers occupation')" oninput="this.setCustomValidity('')"  placeholder="Occupation" class="form-control input-lg">
+                
+                <input type="text" ng-model="user.fathernumber" required pattern="[0-9]{3}-?[0-9]{6,12}$" maxlength=15 title='Phone number must be atleast 9 digits long' oninput="this.setCustomValidity('')" placeholder="Father's Mobile Number" class="form-control input-lg">
+
+                <div class="bord">    
+                  <h4> Please select your gender</h4>
+                  <h4>&nbsp; &nbsp; <input type="radio" value="Male" ng-model="user.gender" > Male &nbsp;
+                      &nbsp; <input type="radio" value="Female" ng-model="user.gender" > Female </h4>
+                 </div>
+                
+                <div class="bord">
+                    <input id ="imageUploadCollege" ng-model="user.studentphoto" type="filepicker-dragdrop" data-fp-button-text="Pick Image" data-fp-drag-text="Alternatively, drag and drop the file here " data-fp-services="COMPUTER" data-fp-button-class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-change="(event.fpfile.url)" ng-init="user.studentphoto='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+                </div>
+
+                <div class="bord">
+                    <input id ="documentUploadCollege" ng-model="user.studentdocument" type="filepicker-dragdrop" data-fp-button-text="Pick Document" data-fp-drag-text="Alternatively, drag and drop the file here " data-fp-services="COMPUTER" data-fp-button-class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*,application/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-change="(event.fpfile.url)" ng-init="user.studentdocument='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+                </div>
+
+                <h3>Acedmic Records:</h3>
+                <div class="bord" id="aced_bord">
+                  
+                  <label class="checkbox">
+                    <input type="checkbox" ng-model="user.master12th" ng-required="true"> 10th
+                  </label>
+                  <input id="checkSlave12th" ng-model="user.master12thText" type="number" ng-required="true" ng-hide="!user.master12th" ng-disabled="!user.master12th" placeholder="Your 10th Class Marks" class="form-control slaveInput" min="0" max="100">
+                  
+                  <label class="checkbox">
+                    <input type="checkbox" ng-model="user.masterUG" ng-disabled="((!user.master12thText) || (!user.master12th))"> 12th
+                  </label>
+                  <input id="checkSlaveUG" ng-model="user.masterUGText" type="number" ng-hide="((!user.masterUG) || (!user.master12th) || (!user.master12thText))" ng-disabled="((!user.masterUG) || (!user.master12th) || (!user.master12thText))" placeholder="12's Class Marks" class="form-control slaveInput" min="0" max="100">
+                  
+                  <label class="checkbox">
+                    <input type="checkbox" ng-model="user.masterPG" ng-disabled="((!user.masterUGText) || (!user.masterUG) || (!user.master12th) || (!user.master12thText))"> UG
+                  </label>
+                  <input id="checkSlavePG" ng-model="user.masterPGText" type="number" ng-hide="((!user.masterPG) || (!user.masterUGText) || (!user.masterUG) || (!user.master12th) || (!user.master12thText))" ng-disabled="((!user.masterPG) || (!user.masterUGText) || (!user.masterUG) || (!user.master12th) || (!user.master12thText))" placeholder="UG's CGPA / GPA/ Percentile" class="form-control slaveInput" min="0" max="100">
+                
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                <div class="no-bord">
+                    <button type="button" class="btn btn-default btn-lg main-search-btn btn-block sel-btn" data-toggle="modal" data-target=".bs-example-modal-1">Select UG Courses</button>
+                </div>
+                <div class="no-bord">   
+                    <button type="button" class="btn btn-default btn-lg main-search-btn btn-block sel-btn" data-toggle="modal" data-target=".bs-example-modal-2">Select PG Courses</button>
+                </div>
+                </div>
+                <textarea ng-model="user.studentabout" placeholder="About Myself" class="form-control" rows="7"></textarea>
+                
+                <input type="text" ng-model="user.studentfacebook" placeholder="Facebook Profile Link" class="form-control input-lg">
+                
+                <input name="password" type="password" required oninvalid="this.setCustomValidity('Password cannot be blank')" oninput="this.setCustomValidity('')" ng-model="user.password" placeholder="Password" class="form-control input-lg">
+                
+                <input name="confirm_password" type="password" required ng-model="confirm_password" placeholder="Re-type Password" class="form-control input-lg" ui-validate=" '$value==user.password' " ui-validate-watch=" 'user.password' ">
+                <div ng-show="student_reg.confirm_password.$dirty && student_reg.confirm_password.$error.validator">Passwords do not match! </div>
+                <input type="hidden" ng-model="user.profiletype" ng-init="user.profiletype='student'" class="form-control" >
+                <input type="hidden" ng-model="user.studentAvailability" ng-init="user.studentAvailability='offline'" class="form-control"><br>
+                <input type="hidden" ng-model="user.studentstatus" ng-init="user.studentstatus='notverified'" class="form-control"><br>
+
+
+                <div re-captcha ng-model="user.captcha"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Register" class="btn btn-success btn-lg pull-right btn-block" ng-disabled="submitbuttondisabled"/>
+            </div>
+        </div>
+        <hr />
+    </form>
+</div>
+
+<modal-dialog show='modalShown'>
+    <div class="container-fluid">
+        <div class="row">
+            <center>
+                <i class="fa fa-spinner fa-5x fa-spin"></i>
+            </center>
+        </div>
+        <div class="row">
+            <center>
+                <h4> Registering.. </h4>
+            </center>
+        </div>
+    </div>
+</modal-dialog>
+
+<!-- MODALS CONTENT -->
+
+<div class="modal fade bs-example-modal-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Undergraduate Courses</h4>
+            </div>
+            <div class="modal-body">
+                <label class="checkbox" ng-repeat="role in roles">
+                    <input type="checkbox" checklist-model="uSer.roles" checklist-value="role.id"> {{role.text}}
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class=" btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Done</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Postgraduate Courses</h4>
+            </div>
+            <div class="modal-body">
+                <label class="checkbox" ng-repeat="roleA in rolesA">
+                    <input type="checkbox" checklist-model="uSerA.rolesA" checklist-value="roleA.idA"> {{roleA.textA}}
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class=" btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Done</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var element = document.getElementById('imageUploadCollege')
+element.type="filepicker-dragdrop";
+element.onchange = function(e){
+    console.log(e);
+};
+
+</script>
+<script type="text/javascript" src="//api.filepicker.io/v0/filepicker.js">filepicker.setKey('AlHT3QcNWSGCQpTZ3dLn3z');</script>
+

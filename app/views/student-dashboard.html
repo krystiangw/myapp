@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="styles/main.css">
+<img class="intro-bg" src="../images/intro-bg.jpg" />
+
+<div class="container student-dashboard">
+	<div role="tabpanel">
+	  	<ul class="nav nav-tabs" role="tablist">
+	    	<li role="presentation" class="active"><a class="tab-head" role="tab" data-target="#dashboard" data-toggle="tab">Dashboard</a></li>
+      		<li role="presentation"><a class="tab-head" role="tab" data-target="#bookedhistory" data-toggle="tab">Booked History</a></li>
+      		<li role="presentation"><a class="tab-head" role="tab" data-target="#profile" data-toggle="tab">Profile</a></li>
+	    </ul>
+	  	<div class="tab-content" ng-controller="StudentDashCtrl">
+	    	<div ng-include="'views/student-dashboard-dash.html'" role="tabpanel" class="tab-pane active" id="dashboard" ng-controller="StudentDashCtrl">
+	    	</div>
+	    	<div ng-include="'views/student-dashboard-bh.html'" role="tabpanel" class="tab-pane" id="bookedhistory" ng-controller="StudentDashCtrl">
+	    	</div>
+	    	<div ng-include="'views/student-dashboard-profile.html'" role="tabpanel" class="tab-pane" id="profile" ng-controller="StudentDashCtrl">
+	    	</div>
+	    </div>
+	</div>
+</div>

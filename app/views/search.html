@@ -1,0 +1,68 @@
+<img class="intro-bg" src="../images/intro-bg.jpg" />
+
+
+<div class="container search-page"> 
+    <div class="row search-results">
+      <div class="col-md-3 filter-pane">
+        <h5> Filters </h5>
+        <hr />
+        <label class="radioFilter">
+          <input type="radio" name="colltype" value="paid" ng-model="colltype">Featured Colleges
+        </label>
+        <label class="radioFilter">
+          <input type="radio" name="colltype" checked value="college" ng-model="colltype">All Colleges
+        </label>
+        <h5> Search with College Name </h5>
+        <hr />
+        <input type="text" class="form-control main-input-box aaa" ng-model="subfilter">
+      </div>
+        <div class="col-md-9">
+          <div class="row search-query">
+            <div class="col-md-12">
+              <center>
+                <!--Showing results for studying <span>akak</span> in <span>ssd</span>. -->
+                Search Results For colleges.
+              </center> 
+            </div>
+          </div>
+          <div class="container-fluid" id="src-scroll" style="overflow-y : scroll; height : 960px;">
+              <div class="row">
+                <div class="col-md-3 result" id="result" ng-animate="'animate'"  ng-repeat="(collegeId,college) in collegetype| filter:colltype | filter:subfilter | orderBy:'cId'" ng-show="college.verifiedcollege=='verified'">
+                  <a href="" ng-show="signedIn()" ng-href="#/college-profile/{{college.collegeId}}">
+                    <div class="container-fluid">
+                      <div class="row result-image">
+                        <img width="310" height="200" ng-src="{{college.collegephoto}}" alt="Photo of {{college.collegephoto}}">
+                      </div>
+                      <div class="row result-det">
+                        <strong><h5>{{college.collegename}}</h5></strong> <!-- max allowed characters for name 130 -->
+                        <h6>{{college.collegeaffiliation}}</h6> <!-- max allowed characters for aff no 66 -->
+                        <h6>{{college.collegestate}}</h6>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" ng-hide="signedIn()" ng-href="#/login"> 
+                    <div class="container-fluid">
+                      <div class="row result-image">
+                        <img width="310" height="200" ng-src="{{college.collegephoto}}" alt="Photo of {{college.collegephoto}}">
+                      </div>
+                      <div class="row result-det">
+                        <strong><h5>{{college.collegename}}</h5></strong> <!-- max allowed characters for name 130 -->
+                        <h6>{{college.collegeaffiliation}}</h6> <!-- max allowed characters for aff no 66 -->
+                        <h6>{{college.collegestate}}</h6>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+	

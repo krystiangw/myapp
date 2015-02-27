@@ -1,0 +1,242 @@
+<div class="stu-profile" ng-controller="StudentDashCtrl">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row stu-image">
+					<img class="img-responsive" src="" ng-src="{{user.profile.studentphoto}}" alt="Photo of {{user.profile.studentphoto}}" width="250" />
+				</div>
+				<div class="row stu-name">
+					<center><h2> {{ user.profile.studentname }} </h2></center>
+				</div>
+			</div>
+			<div class="col-md-9" id="src-scroll" style="max-height : 600px; overflow-y : scroll;">
+				<h2 class="wel-msg"> Welcome to My Mission Admission, {{ user.profile.studentname }} </h2>
+				<div class="container-fluid stu-det-block">
+					<div class="row block-head">
+						<h4 class="pull-right"> Personal Details </h4>
+					</div>
+					<div class="row block-det">
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Full Name </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4> 
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Full Name" class="form-control" value="{{ user.profile.studentname }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Gender </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4> 
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Gender" class="form-control" value="{{ user.profile.gender }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> E- Mail </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="email" placeholder="E Mail" class="form-control" value="{{ user.profile.email }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Phone Number </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Phone Number" class="form-control" value="{{ user.profile.studentmobile }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Father's Name </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Father's Name" class="form-control" value="{{ user.profile.fathername }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Father's Occupation </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Father's Occupation" class="form-control" value="{{ user.profile.occupation }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> Father's Number </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Father's Number" class="form-control" value="{{ user.profile.fathernumber }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid stu-det-block">
+					<div class="row block-head">
+						<h4 class="pull-right"> Acedmic Records </h4>
+					</div>
+					<div class="row block-det">
+						<div class="row">
+							<div class="col-md-4">
+								<h4> 10 th Marks </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="10th Marks" class="form-control" value="{{ user.profile.academicrecord12thMarks }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> 12 th Marks </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="email" placeholder="12th Marks" class="form-control" value="{{ user.profile.academicrecordUGMarks }}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> UG Marks </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="UG Marks" class="form-control" value="{{ user.profile.academicrecordPGMarks }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid stu-det-block">
+					<div class="row block-head">
+						<h4 class="pull-right"> Your Bio </h4>
+					</div>
+					<div class="row block-det">
+						<div class="row">
+							<div class="col-md-12">
+								<center><h4> {{ user.profile.studentabout }} </h4></center>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid stu-det-block">
+					<div class="row block-head">
+						<h4 class="pull-right"> Your Courses </h4>
+					</div>
+					<div class="row block-det">
+						<div class="row">
+							<div class="col-md-4">
+								<h4> UG Courses </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-12" id="UGCourseIntrested" ng-repeat="ug in user.profile.coursesUG">
+								<div ng-if="ug == '0'"><center><h4>Engineering </h4></center></div>
+								<div ng-if="ug == '1'"><center><h4>Computer Applications / IT </h4></center></div>
+								<div ng-if="ug == '2'"><center><h4>Biotechnology </h4></center></div>
+								<div ng-if="ug == '3'"><center><h4>Microbiology </h4></center></div>
+								<div ng-if="ug == '4'"><center><h4>Agriculture </h4></center></div>
+								<div ng-if="ug == '5'"><center><h4>Food Technology </h4></center></div>
+								<div ng-if="ug == '6'"><center><h4>Nutrition and Dietetics </h4></center></div>
+								<div ng-if="ug == '7'"><center><h4>Arts (Humanities) </h4></center></div>
+								<div ng-if="ug == '8'"><center><h4>Library Science </h4></center></div>
+								<div ng-if="ug == '9'"><center><h4>Management </h4></center></div>
+								<div ng-if="ug == '10'"><center><h4>Commerce </h4></center></div>
+								<div ng-if="ug == '11'"><center><h4>Economics </h4></center></div>
+								<div ng-if="ug == '12'"><center><h4>Hotel Management and Tourism </h4></center></div>
+								<div ng-if="ug == '13'"><center><h4>Architecture </h4></center></div>
+								<div ng-if="ug == '14'"><center><h4>Planning </h4></center></div>
+								<div ng-if="ug == '15'"><center><h4>Fine Arts </h4></center></div>
+								<div ng-if="ug == '16'"><center><h4>Performing Arts </h4></center></div>
+								<div ng-if="ug == '17'"><center><h4>Pharmaceutical Sciences </h4></center></div>
+								<div ng-if="ug == '18'"><center><h4>Ayurvedic Pharmaceutical Sciences </h4></center></div>
+								<div ng-if="ug == '19'"><center><h4>Physiotherapy </h4></center></div>
+								<div ng-if="ug == '20'"><center><h4>Paramedical Sciences </h4></center></div>
+								<div ng-if="ug == '21'"><center><h4>Education </h4></center></div>
+								<div ng-if="ug == '22'"><center><h4>Physical Education </h4></center></div>
+								<div ng-if="ug == '23'"><center><h4>Law </h4></center></div>
+								<div ng-if="ug == '24'"><center><h4>Design </h4></center></div>
+								<div ng-if="ug == '25'"><center><h4>Sciences </h4></center></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<h4> PG Courses </h4>
+							</div>
+							<div class="col-md-2">
+								<h4> : </h4>
+							</div>
+							<div class="col-md-12" id="PGCourseIntrested" ng-repeat="pg in user.profile.coursesPG">
+								<div ng-if="pg == '0'"><center><h4>Engineering </h4></center></div>
+								<div ng-if="pg == '1'"><center><h4>Computer Applications / IT </h4></center></div>
+								<div ng-if="pg == '2'"><center><h4>Biotechnology </h4></center></div>
+								<div ng-if="pg == '3'"><center><h4>Microbiology </h4></center></div>
+								<div ng-if="pg == '4'"><center><h4>Biochemistry </h4></center></div>
+								<div ng-if="pg == '5'"><center><h4>Agriculture </h4></center></div>
+								<div ng-if="pg == '6'"><center><h4>Food Technology </h4></center></div>
+								<div ng-if="pg == '7'"><center><h4>Nutrition and Dietetics </h4></center></div>
+								<div ng-if="pg == '8'"><center><h4>English and Foreign Languages </h4></center></div>
+								<div ng-if="pg == '9'"><center><h4>Indian Languages </h4></center></div>
+								<div ng-if="pg == '10'"><center><h4>Library Science </h4></center></div>
+								<div ng-if="pg == '11'"><center><h4>Sociology </h4></center></div>
+								<div ng-if="pg == '12'"><center><h4>Geography </h4></center></div>
+								<div ng-if="pg == '13'"><center><h4>Management </h4></center></div>
+								<div ng-if="pg == '14'"><center><h4>Commerce </h4></center></div>
+								<div ng-if="pg == '15'"><center><h4>Economics </h4></center></div>
+								<div ng-if="pg == '16'"><center><h4>Hotel Management and Tourism </h4></center></div>
+								<div ng-if="pg == '17'"><center><h4>Architecture </h4></center></div>
+								<div ng-if="pg == '18'"><center><h4>Planning </h4></center></div>
+								<div ng-if="pg == '19'"><center><h4>Fine Arts</h4></center></div>
+								<div ng-if="pg == '20'"><center><h4>Performing Arts</h4></center></div>
+								<div ng-if="pg == '21'"><center><h4>Pharmaceutical Sciences </h4></center></div>
+								<div ng-if="pg == '22'"><center><h4>Ayurvedic Pharmaceutical Sciences</h4></center></div>
+								<div ng-if="pg == '23'"><center><h4>Physiotherapy </h4></center></div>
+								<div ng-if="pg == '24'"><center><h4>Paramedical Sciences</h4></center></div>
+								<div ng-if="pg == '25'"><center><h4>History </h4></center></div>
+								<div ng-if="pg == '26'"><center><h4>Political Science </h4></center></div>
+								<div ng-if="pg == '27'"><center><h4>Psychology </h4></center></div>
+								<div ng-if="pg == '28'"><center><h4>Education </h4></center></div>
+								<div ng-if="pg == '29'"><center><h4>Physical Education </h4></center></div>
+								<div ng-if="pg == '30'"><center><h4>Law </h4></center></div>
+								<div ng-if="pg == '31'"><center><h4>Design </h4></center></div>
+								<div ng-if="pg == '32'"><center><h4>Sciences </h4></center></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

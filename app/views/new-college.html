@@ -1,0 +1,131 @@
+<img class="intro-bg" src="../images/intro2-bg.jpg" />
+
+<div class="container auth-forms-dark">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+            <h2>Register Your College</h2>
+            <h4>{{message}}</h4>
+            </center>
+        </div>
+    </div>
+    <hr />
+    <form name="college_reg" ng-submit="registerForCollege()">  
+    <p ng-show="error" class="text-danger">{{ error }}</p> 
+
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" required oninvalid="this.setCustomValidity('College Name could not be blank')" oninput="this.setCustomValidity('')" ng-model="userb.collegename" placeholder="College Name" class="form-control input-lg">
+
+                <input type="text" required oninvalid="this.setCustomValidity('Please enter the college affiliation')" oninput="this.setCustomValidity('')" ng-model="userb.collegeaffiliation" placeholder="College Affiliated to" class="form-control input-lg">
+
+                <select required oninvalid="this.setCustomValidity('Please select a country from the list')" onclick="this.setCustomValidity('')" onkeypress="this.setCustomValidity('')" class="form-control" ng-model="userb.collegecountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select> 
+
+                <select class="form-control" required oninvalid="this.setCustomValidity('Please select your state')" onclick="this.setCustomValidity('')" onchange="this.setCustomValidity('')" ng-model="userb.collegestate" name ="state" id ="state"></select>
+                <script language="javascript">print_country("country");</script>
+                
+                <input type="text" required oninvalid="this.setCustomValidity('Please enter your address')" oninput="this.setCustomValidity('')" ng-model="userb.collegeaddress" placeholder="Address" class="form-control input-lg">
+                
+                <input type="text" required oninvalid="this.setCustomValidity('Please enter your city')" oninput="this.setCustomValidity('')" ng-model="userb.collegecity" placeholder="City" class="form-control input-lg">
+                
+                <input type="text" required ng-model="userb.collegelocation" placeholder="Nearby Location (Optional)" class="form-control input-lg">
+                <div class="bord">
+                    <input id ="imageUploadCollege" type="filepicker-dragdrop" data-fp-button-text="Pick Image" data-fp-drag-text="Alternatively, drag and drop the file here " data-fp-services="COMPUTER" data-fp-button-class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-model="userb.collegephoto" ng-change="(event.fpfile.url)" ng-init="userb.collegephoto='pic_not_uploaded'" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div> 
+                <div class="no-bord">
+                    <button type="button" class="btn btn-default btn-lg main-search-btn btn-block sel-btn" data-toggle="modal" data-target=".bs-example-modal-1">Select UG Courses</button>
+                </div>
+                <div class="no-bord">   
+                    <button type="button" class="btn btn-default btn-lg main-search-btn btn-block sel-btn" data-toggle="modal" data-target=".bs-example-modal-2">Select PG Courses</button>
+                </div>
+                </div>
+               
+                 <input type="text" pattern="^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$" required oninvalid="this.setCustomValidity('Please enter a valid Gmail Address')" oninput="this.setCustomValidity('')" title='Enter in format abcdef@gmail.com' ng-model="userb.counselloremail" placeholder="Counsellor Gmail Address" class="form-control input-lg">
+               
+                <input type="text" required pattern="((www[.])[^\s()<>]+)" oninvalid="this.setCustomValidity('Please enter a valid website')" title='Your website must start with www.' oninput="this.setCustomValidity('')" ng-model="userb.collegewebsite" placeholder="Website" class="form-control input-lg">
+                
+                <input type="password" required oninvalid="this.setCustomValidity('Please enter your password')" oninput="this.setCustomValidity('')" ng-model="userb.collegepassword" placeholder="Password" class="form-control input-lg">
+                
+                <input name="confirm_password" type="password" required ng-model="confirm_password" placeholder="Re-type Password" class="form-control input-lg" ui-validate=" '$value==userb.collegepassword' " ui-validate-watch=" 'userb.collegepassword' ">
+                <div ng-show="college_reg.confirm_password.$dirty && college_reg.confirm_password.$error.validator">Passwords do not match! </div>
+                
+    
+                <input type="hidden" ng-model="userb.profiletype" ng-init="userb.profiletype='college'" class="form-control"><br>
+                <input type="hidden" ng-model="userb.verifiedcollege" ng-init="userb.verifiedcollege='notverified'" class="form-control"><br>
+                <input type="hidden" ng-model="userb.collegetype" ng-init="userb.collegetype='free'" class="form-control"><br>
+                <input type="hidden" ng-model="userb.collegeAvailability" ng-init="userb.collegeAvailability='offline'" class="form-control"><br>
+                <input type="hidden" ng-model="userb.collegeRank" ng-init="userb.collegeRank= 2001" class="form-control"><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Register" style="color : white; :hover{color:white;}" class="btn btn-success btn-lg pull-right btn-block" ng-disabled="submitbuttondisabled"/>
+            </div>
+        </div>
+        <hr />
+    </form>
+</div>
+
+<modal-dialog show='modalShown'>
+    <div class="container-fluid">
+        <div class="row">
+            <center>
+                <i class="fa fa-spinner fa-5x fa-spin"></i>
+            </center>
+        </div>
+        <div class="row">
+            <center>
+                <h4> Registering.. </h4>
+            </center>
+        </div>
+    </div>
+</modal-dialog>
+
+
+<!-- MODAL CONTENT -->
+
+<div class="modal fade bs-example-modal-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Undergraduate Courses</h4>
+            </div>
+            <div class="modal-body">
+                <label class="checkbox" ng-repeat="role in roles">
+                        <input type="checkbox" checklist-model="uSer.roles" checklist-value="role.id"> {{role.text}}
+                    </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class=" btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Done</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Postgraduate Courses</h4>
+            </div>
+            <div class="modal-body">
+                <label class="checkbox" ng-repeat="roleA in rolesA">
+                    <input type="checkbox" checklist-model="uSerA.rolesA" checklist-value="roleA.idA"> {{roleA.textA}}
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class=" btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Done</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>

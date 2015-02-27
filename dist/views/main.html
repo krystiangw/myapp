@@ -1,0 +1,20 @@
+<img class="intro-bg" src="../images/intro-bg.jpg"> <div class="container-fluid intro" ng-controller="MainCtrl"> <div class="row intro-head"> <div class="col-sm-12"> <center><h1>MY MISSION ADMISSION</h1></center> </div> </div> <hr> <div class="row"> <div class="col-sm-12"> <center><h3>Our Mission : Your Admission</h3></center> </div> </div> <div class="row"> <br><br> <center> <button class="btn-circle" id="circle"> <div class="dis-n" id="ico-src"><i class="fa fa-search"></i></div> <div class="dis-b" id="ico-up"><i class="fa fa-2x fa-angle-double-up"></i></div> </button> </center> </div> <div class="collapserow dis-b" id="collapserow"> <div class="row"> <div class="col-xs-5"> <select ng-model="stateToView" ng-change="stateSelected()" class="form-control main-input-box" ng-options="k as v for (k, v) in states"> <option value="">{{dropdownMessage}} </select> </div> <div class="col-xs-5"> <select ng-model="courseToView" ng-change="courseSelected()" class="form-control main-input-box" ng-options="k as v for (k, v) in courses"> <option value="">{{dropdownMessageCourses}} </select> </div> <div class="col-xs-2"><button type="button" ng-click="go('/search')" class="btn btn-primary btn-lg btn-block main-search-btn"><i class="fa fa-search"></i></button> </div> </div> </div> <div class="row shift-down"> <div class="col-md-4"></div> <div class="col-md-2"> <button ng-hide="signedIn()" ng-click="go('/register')" type="button" class="btn btn-default btn-lg main-search-btn btn-block">SIGN UP</button> </div> <div class="col-md-2"> <button ng-hide="signedIn()" ng-click="go('/login')" type="button" class="btn btn-default btn-lg main-search-btn btn-block">LOGIN</button> </div> <div class="col-md-4"></div> </div> <div class="row vid-box"> <center> <iframe width="500" height="300" frameborder="0" src="https://www.youtube.com/embed/iSCIesIM8Ww" allowfullscreen></iframe> </center> </div> </div>  <script>$(function() {
+  $('.btn-circle').click(function() {
+    if ($('#collapserow').hasClass('dis-b')) {
+      $('#collapserow').removeClass('dis-b');
+      $('#collapserow').addClass('dis-n');
+      $('#ico-src').removeClass('dis-n');
+      $('#ico-up').removeClass('dis-b');
+      $('#ico-src').addClass('dis-b');
+      $('#ico-up').addClass('dis-n');
+    }
+    else if($('#collapserow').hasClass('dis-n')) {
+      $('#collapserow').removeClass('dis-n');
+      $('#collapserow').addClass('dis-b');
+      $('#ico-src').removeClass('dis-b');
+      $('#ico-up').removeClass('dis-n');
+      $('#ico-src').addClass('dis-n');
+      $('#ico-up').addClass('dis-b');
+    }
+  });
+});</script>

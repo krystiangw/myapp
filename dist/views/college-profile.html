@@ -1,0 +1,195 @@
+<img class="intro-bg" src="../images/intro-bg.jpg"> <div class="container college-profile" ng-controller="CollegeProfileCtrl"> <div class="row"> <div class="col-md-8 img-row"> <img class="" src="" ng-src="{{college.collegephoto}}" alt="Photo of {{college.collegename}}" height="250" width="700"> </div> <div class="col-md-4 side-fix"> <div class="container-fluid"> <div class="row online" ng-if="available()"> <!--- div for status online --> <div class="col-md-8 col-xs-8"> <h6> College Status : </h6> </div> <div class="col-md-4 col-xs-4"> <h6> ONLINE&nbsp;&nbsp;<i class="fa fa-circle fa-lg"></i></h6> </div> </div> <!--- div end --> <div class="row offline" ng-if="notavailable()"> <!--- div for status online --> <div class="col-md-8 col-xs-8"> <h6> College Status : </h6> </div> <div class="col-md-4 col-xs-4"> <h6> OFFLINE&nbsp;&nbsp;<i class="fa fa-circle fa-lg"></i></h6> </div> </div> <!--- div end --> <hr> <div style="color:red" ng-show="user.profile.studentstatus=='block'" class="col-md-8 img-row"> <h2> WARNING! You are blocked by the admin you can't build a enquiry with Colleges. &nbsp;&nbsp;<i class="fa fa-user-times"></i></h2> </div> <form name="sessionbooking" ng-submit="bookSession(college.$id)" ng-hide="userc.profile.profiletype=='college' || usera.profile.profiletype=='admin' || user.profile.studentstatus=='block'"> <p class="input-group"> <input type="text" class="form-control" id="date-ip" datepicker-popup="dd-MM-yyyy" ng-model="dt" is-open="opened" format-month="MMMM" min-date="minDate" max-date="'2015-06-22'" show-button-bar="false" date-disabled="null" ng-required="true" close-text="Close" placeholder=""> <span class="input-group-btn" show-weeks="false"> <button type="button" class="btn btn-default date-btn" id="date-btn" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> </span> </p> <center><timepicker ng-model="mytime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="false"></timepicker></center> <textarea style="margin-bottom : 10px" name="query" ng-model="query" placeholder="Your Query" class="form-control input-lg" row="2" required></textarea> <input type="submit" class="btn btn-default btn-block btn-lg book-btn"> <div ng-if="submitsuccesstext"> <h5 style="color:green"><strong> Congrats! </strong> You have successfuly booked the session with {{college.collegename}}. </h5> </div> </form> </div> </div> <div class="row det-row" ng-model="college" ng-controller="CollegeProfileCtrl"> <div class="col-md-8 side1"> <div class="container-fluid"> <div class="row"> <h2> {{college.collegename}} </h2> </div> <div class="row"> <h4 class="pull-right">{{college.collegecity}} City, {{college.collegestate}}</h4> </div> <div class="row"> <h4 class="pull-right"> Affiliated to : {{college.collegeaffiliation}} </h4> </div> <div class=""> <a ng-click="openModalCourseOffered()"><h4> Courses Offered </h4></a> </div> </div> <hr> <div class="container-fluid"> <div class="row"> <h4 id="web"><a target="_blank" ng-href="http://{{college.collegewebsite}}"><center>{{college.collegewebsite}}</center></a></h4> </div> </div> </div> <div class="col-md-4 side2"> <div class="container-fluid side2-block"> <div class="row"> <center><p><i class="fa fa-location-arrow"></i></p></center> </div> <div class="row"> <center><p>{{college.collegeaddress}} NR {{college.collegelocation}}</p></center> </div> </div> <div class="container-fluid side2-block"> <div class="row"> <center><p><i class="fa fa-envelope"></i></p></center> </div> <div class="row"> <center><p>{{college.counselloremail}} </p></center> </div> </div> </div> </div> </div> <div ng-controller="CollegeProfileCtrl"> <script type="text/ng-template" id="myModalContent.html"><div class="modal-header">
+            <h3 class="modal-title">Courses Offered</h3>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped">
+            <h4><i><b> Following courses are offered in undergraduate programs: </b></i></h4>
+                                        <tbody ng-repeat="ug in college.coursesofferedUG">
+                                          <tr ng-if="ug == '0'">
+                                            <td> Engineering </td>
+                                          </tr>
+                                          <tr ng-if="ug == '1'">
+                                            <td> Computer Applications / IT  </td>
+                                          </tr>
+                                          <tr ng-if="ug == '2'">
+                                            <td> Biotechnology </td>
+                                          </tr>
+                                          <tr ng-if="ug == '3'">
+                                            <td> Microbiology </td>
+                                          </tr>
+                                          <tr ng-if="ug == '4'">
+                                            <td> Agriculture </td>
+                                          </tr>
+                                          <tr ng-if="ug == '5'">
+                                            <td> Food Technology </td>
+                                          </tr>
+                                          <tr ng-if="ug == '6'">
+                                            <td> Nutrition and Dietetics </td>
+                                          </tr>
+                                          <tr ng-if="ug == '7'">
+                                            <td> Arts (Humanities) </td>
+                                          </tr>
+                                          <tr ng-if="ug == '8'">
+                                            <td> Library Science </td>
+                                          </tr>
+                                          <tr ng-if="ug == '9'">
+                                            <td> Management </td>
+                                          </tr>
+                                          <tr ng-if="ug == '10'">
+                                            <td> Commerce </td>
+                                          </tr>
+                                          <tr ng-if="ug == '11'">
+                                            <td> Economics </td>
+                                          </tr>
+                                          <tr ng-if="ug == '12'">
+                                            <td> Hotel Management and Tourism </td>
+                                          </tr>
+                                          <tr ng-if="ug == '13'">
+                                            <td> Architecture </td>
+                                          </tr>
+                                          <tr ng-if="ug == '14'">
+                                            <td> Planning </td>
+                                          </tr>
+                                          <tr ng-if="ug == '15'">
+                                            <td> Fine Arts </td>
+                                          </tr>
+                                          <tr ng-if="ug == '16'">
+                                            <td> Performing Arts </td>
+                                          </tr>
+                                          <tr ng-if="ug == '17'">
+                                            <td> Pharmaceutical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="ug == '18'">
+                                            <td> Ayurvedic Pharmaceutical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="ug == '19'">
+                                            <td> Physiotherapy </td>
+                                          </tr>
+                                          <tr ng-if="ug == '20'">
+                                            <td> Paramedical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="ug == '21'">
+                                            <td> Education </td>
+                                          </tr>
+                                          <tr ng-if="ug == '22'">
+                                            <td> Physical Education </td>
+                                          </tr>
+                                          <tr ng-if="ug == '23'">
+                                            <td> Law </td>
+                                          </tr>
+                                          <tr ng-if="ug == '24'">
+                                            <td> Design </td>
+                                          </tr>
+                                          <tr ng-if="ug == '25'">
+                                            <td> Sciences </td>
+                                          </tr>                         
+                                      </tbody>
+                                    </table>
+                                    <table class="table table-striped">
+                                      <h4><i><b> Following courses are offered in postgraduate programs: </b></i></h4>
+                                      <tbody ng-repeat="pg in college.coursesofferedPG">
+                                          <tr ng-if="pg == '0'">
+                                            <td> Engineering </td>
+                                          </tr>
+                                          <tr ng-if="pg == '1'">
+                                            <td> Computer Applications / IT  </td>
+                                          </tr>
+                                          <tr ng-if="pg == '2'">
+                                            <td> Biotechnology </td>
+                                          </tr>
+                                          <tr ng-if="pg == '3'">
+                                            <td> Microbiology </td>
+                                          </tr>
+                                          <tr ng-if="pg == '4'">
+                                            <td> Biochemistry </td>
+                                          </tr>
+                                          <tr ng-if="pg == '5'">
+                                            <td> Agriculture </td>
+                                          </tr>
+                                          <tr ng-if="pg == '6'">
+                                            <td> Food Technology </td>
+                                          </tr>
+                                          <tr ng-if="pg == '7'">
+                                            <td> Nutrition and Dietetics </td>
+                                          </tr>
+                                          <tr ng-if="pg == '8'">
+                                            <td> English and Foreign Languages </td>
+                                          </tr>
+                                          <tr ng-if="pg == '9'">
+                                            <td> Indian Languages </td>
+                                          </tr>
+                                          <tr ng-if="pg == '10'">
+                                            <td> Library Science </td>
+                                          </tr>
+                                          <tr ng-if="pg == '11'">
+                                            <td> Sociology </td>
+                                          </tr>
+                                          <tr ng-if="pg == '12'">
+                                            <td> Geography </td>
+                                          </tr>
+                                          <tr ng-if="pg == '13'">
+                                            <td> Management </td>
+                                          </tr>
+                                          <tr ng-if="pg == '14'">
+                                            <td> Commerce </td>
+                                          </tr>
+                                          <tr ng-if="pg == '15'">
+                                            <td> Economics </td>
+                                          </tr>
+                                          <tr ng-if="pg == '16'">
+                                            <td> Hotel Management and Tourism  </td>
+                                          </tr>
+                                          <tr ng-if="pg == '17'">
+                                            <td> Architecture </td>
+                                          </tr>
+                                          <tr ng-if="pg == '18'">
+                                            <td> Planning </td>
+                                          </tr>
+                                          <tr ng-if="pg == '19'">
+                                            <td> Fine Arts </td>
+                                          </tr>
+                                          <tr ng-if="pg == '20'">
+                                            <td> Performing Arts </td>
+                                          </tr>
+                                          <tr ng-if="pg == '21'">
+                                            <td> Pharmaceutical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="pg == '22'">
+                                            <td> Ayurvedic Pharmaceutical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="pg == '23'">
+                                            <td> Physiotherapy </td>
+                                          </tr>
+                                          <tr ng-if="pg == '24'">
+                                            <td> Paramedical Sciences </td>
+                                          </tr>
+                                          <tr ng-if="pg == '25'">
+                                            <td> History </td>
+                                          </tr>
+                                          <tr ng-if="pg == '26'">
+                                            <td> Political Science </td>
+                                          </tr>
+                                          <tr ng-if="pg == '27'">
+                                            <td> Psychology </td>
+                                          </tr>
+                                          <tr ng-if="pg == '28'">
+                                            <td> Education </td>
+                                          </tr>
+                                          <tr ng-if="pg == '29'">
+                                            <td> Physical Education </td>
+                                          </tr>
+                                          <tr ng-if="pg == '30'">
+                                            <td> Law </td>
+                                          </tr>
+                                          <tr ng-if="pg == '31'">
+                                            <td> Design </td>
+                                          </tr>
+                                          <tr ng-if="pg == '32'">
+                                            <td> Sciences </td>
+                                          </tr>               
+                                      </tbody>
+                                    </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div></script> </div> </div>
