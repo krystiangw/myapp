@@ -10,7 +10,7 @@ angular.module('angularFilepicker', [])
         restrict: "E",
         replace: true,
         require: "ngModel",
-        template: "<button ng-click='pickFiles()'>{{buttonText}}</button>",
+        template: "<button type='button' ng-click='pickFiles()'>{{buttonText}}</button>",
         link: function(scope, element, attrs, ngModel) {
             scope.pickFiles = pickFiles;
 
