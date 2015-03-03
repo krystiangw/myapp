@@ -24,7 +24,8 @@ var app = angular.module('mmaApp', [
     'checklist-model',
     'ui.bootstrap',
     'firebase',
-    'reCAPTCHA'
+    'reCAPTCHA',
+    'angularFilepicker'
   ])
   app.constant('FIREBASE_URL', 'https://manishmma.firebaseio.com/');
   app.directive('demoEditor', function(broadcastFactory) {

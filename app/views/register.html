@@ -35,13 +35,16 @@
                  </div>
                 
                 <div class="bord">
-                    <input id ="imageUploadCollege" ng-model="user.studentphoto" type="filepicker-dragdrop" data-fp-button-text="Pick Image" data-fp-drag-text="Alternatively, drag and drop the file here " data-fp-services="COMPUTER" data-fp-button-class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-change="filepickerCallback()" ng-init="user.studentphoto='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+                    <fp-input ng-model="user.studentphoto" data-fp-button-text="Pick Image" data-fp-services="COMPUTER" class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-init="user.studentphoto='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+
                 </div>
+                <pre>{{user.studentphoto | json:4 }}</pre>
 
                 <div class="bord">
-                    <input id ="documentUploadCollege" ng-model="user.studentdocument" type="filepicker-dragdrop" data-fp-button-text="Pick Document" data-fp-drag-text="Alternatively, drag and drop the file here " data-fp-services="COMPUTER" data-fp-button-class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*,application/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-init="user.studentdocument='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+                    <fp-input ng-model="user.studentdocument" data-fp-button-text="Pick Document" data-fp-services="COMPUTER" class="btn btn-default btn-lg main-search-btn sel-btn-file" data-fp-apikey="AlHT3QcNWSGCQpTZ3dLn3z" data-fp-mimetypes="image/*,application/*" data-fp-multiple="false" data-fp-maxsize="5242880" ng-init="user.studentdocument='https://www.filepicker.io/api/file/EZCfLcpQwz74j4SuozGA'" />
+              
                 </div>
-
+                <pre>{{user.studentdocument | json:4 }}</pre>
                 <h3>Acedmic Records:</h3>
                 <div class="bord" id="aced_bord">
                   
@@ -154,5 +157,4 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//api.filepicker.io/v0/filepicker.js"></script>
 
